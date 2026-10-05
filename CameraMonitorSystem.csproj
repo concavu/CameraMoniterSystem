@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWindowsForms>true</UseWindowsForms>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+		<PackageId>CameraMonitorSystem</PackageId>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AForge.Video.DirectShow" Version="2.2.5" />
+		<PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.27.0" />
+		<PackageReference Include="Microsoft.ML.OnnxRuntime.Managed" Version="1.27.0" />
+		<PackageReference Include="Microsoft.Windows.AI.MachineLearning" Version="2.3.10-preview" />
+		<PackageReference Include="OpenCvSharp4" Version="4.13.0.20260627" />
+		<PackageReference Include="OpenCvSharp4.Extensions" Version="4.13.0.20260627" />
+		<PackageReference Include="OpenCvSharp4.runtime.win" Version="4.13.0.20260627" />
+		<PackageReference Include="RestSharp" Version="114.0.1-alpha.0.4" />
+		<PackageReference Include="System.Drawing.Common" Version="11.0.0-preview.5.26302.115" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="yolov8n.onnx">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+</Project>

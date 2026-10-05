@@ -1,0 +1,14 @@
+# Visual Studio / .NET build artifacts
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.pdb
+*.dll
+*.exe
+*.onnx
+*.lib
+*.tmp
