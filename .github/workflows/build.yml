@@ -6,13 +6,31 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: windows-latest
+    timeout-minutes: 20
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Check that local secrets and model files stay untracked
+        shell: pwsh
+        run: |
+          if (git ls-files --error-unmatch appsettings.json 2>$null) {
+            throw "appsettings.json must not be committed."
+          }
+          if (Get-ChildItem -Filter "*.cs" | Select-String -Pattern 'AppPassword\s*=\s*".+"' ) {
+            throw "Do not hard-code SMTP app passwords in source."
+          }
+          git check-ignore --quiet appsettings.json
+          if ($LASTEXITCODE -ne 0) { throw "appsettings.json must be ignored by Git." }
+          git check-ignore --quiet yolov8n.onnx
+          if ($LASTEXITCODE -ne 0) { throw "The optional ONNX model must be ignored by Git." }
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4

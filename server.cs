@@ -215,9 +215,9 @@ namespace CameraMonitorSystem
                     {
                         EmailSettings = new EmailSettings
                         {
-                            FromEmail = "stanhvu123456@gmail.com",
-                            AppPassword = "kejmlzkoapjrlgze",
-                            ToEmail = "stanhvu123456@gmail.com"
+                            FromEmail = string.Empty,
+                            AppPassword = string.Empty,
+                            ToEmail = string.Empty
                         }
                     };
 
